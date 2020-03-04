@@ -20,7 +20,7 @@
       };
     },
     computed: {
-      image() {
+      image: function() {
         return this.images[this.index];
       }
     },

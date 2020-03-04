@@ -18,7 +18,11 @@
     </div>
     <div id="app">
         <my-component></my-component>
-        @{{images}}
+        @{{images[0]}}
+        <header-image
+            :image-url="images[0]"
+            @header-clicked="openModal"
+        ></header-image>
     <!-- container start -->
         <div class="container">
         <!-- v-if testing -->

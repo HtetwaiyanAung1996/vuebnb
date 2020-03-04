@@ -9,11 +9,14 @@ Vue.component('my-component', {
 });
 import ImageCarousel from '../components/ImageCarousel.vue';
 import ModalWindow from '../components/ModalWindow.vue';
-var app = new Vue({
+import HeaderImage from '../components/HeaderImage.vue';
+window.app = new Vue({
     el: '#app',
     components: {
         ImageCarousel,
-        ModalWindow
+        ModalWindow,
+        HeaderImage
+
     },
     data: Object.assign(model, {
         title: model.title, //from data.js
@@ -37,6 +40,7 @@ var app = new Vue({
     }),
     methods: {
         openModal() {
+            // this.modalOpen = true;
             this.$refs.imagemodal.modalOpen = true;
         }
     }
