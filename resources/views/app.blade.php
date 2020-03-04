@@ -80,7 +80,9 @@
         </div>
     <!-- container end -->
     <!-- modal with close -->
+    {{-- show is the class of modal which is inside style.css and initially false (modal open is false) --}}
         <div id="modal" :class="{ show : modalOpen }">
+            {{-- it is inside the chapter 3 --}}
             <button v-on:click="modalOpen = false" class="modal-close">
                 &times;
             </button>
