@@ -8,10 +8,12 @@ Vue.component('my-component', {
     template: `<div>My Component</div>`
 });
 import ImageCarousel from '../components/ImageCarousel.vue';
+import ModalWindow from '../components/ModalWindow.vue';
 var app = new Vue({
     el: '#app',
     components: {
-        ImageCarousel
+        ImageCarousel,
+        ModalWindow
     },
     data: Object.assign(model, {
         title: model.title, //from data.js
@@ -34,26 +36,8 @@ var app = new Vue({
             ]
     }),
     methods: {
-        escapeKeyListener: function(evt) {
-            if (evt.keyCode === 27 && this.modalOpen) {
-                this.modalOpen = false;
-            }
-        }
-    },
-    created: function() {
-        document.addEventListener('keyup' , this.escapeKeyListener);
-    },
-    destroyed: function() { 
-        document.removeEventListener('keyup', this.escapeKeyListener);
-    },
-    watch: {  //Testing watch  
-        modalOpen: function() {
-            var className = 'modal-open';
-            if (this.modalOpen) {
-                document.body.classList.add(className);  // adding class to body
-            } else {
-                document.body.classList.remove(className); //removing class to body
-            }
+        openModal() {
+            this.$refs.imagemodal.modalOpen = true;
         }
     }
 });

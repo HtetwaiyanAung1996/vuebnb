@@ -25,17 +25,7 @@
             <p v-if="myval"> Hello Vue </p>
             <p v-else> GoodBye Vue</p>
         <!--end  -->
-        <!-- start style (insert image) binding -->
-            <div class="header">
-                <div class="header-img"
-                    :style="headerImageStyle"
-                    v-on:click="modalOpen = true"
-                >
-        <!-- adding modal open function in image and button -->
-                    <button class="view-photos">View Photos</button>
-                </div>
-            </div>
-        <!-- end style(insert image) binding -->
+
             <div class="heading">
                 <h1>@{{title}}</h1>
                 <p>@{{address}}</p>
@@ -81,14 +71,9 @@
     <!-- container end -->
     <!-- modal with close -->
     {{-- show is the class of modal which is inside style.css and initially false (modal open is false) --}}
-        <div id="modal" :class="{ show : modalOpen }">
-            {{-- it is inside the chapter 3 --}}
-            <button v-on:click="modalOpen = false" class="modal-close">
-                &times;
-            </button>
-            <div class="modal-content">
+            <modal-window ref="imagemodal">
                 <image-carousel :images="images"></image-carousel>
-            </div>
+            </modal-window>
         </div>
     </div>
     
