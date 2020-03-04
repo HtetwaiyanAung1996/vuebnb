@@ -20,4 +20,7 @@ mix.js('resources/js/app.js', 'public/js')
 .copy('node_modules/open-sans-all/fonts', 'public/fonts')
 .copy('node_modules/font-awesome/fonts', 'public/fonts')
 .copy('resources/images', 'public/images')
+.options({
+    extractVueStyles: 'public/css/vue-style.css'
+})
 ;
