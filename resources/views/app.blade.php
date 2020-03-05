@@ -38,39 +38,27 @@
             {{-- !-- list more button --> --}}
             <div class="about">
                 <h3>About This Listing</h3>
-                <p :class="{ contracted: contracted }">@{{about}}</p>
+            <expandable-text>@{{ about }}</expandable-text>
             <!-- event listener -->
-                <button v-if="contracted" class="more" v-on:click="contracted = false">+ More</button>
             </div>
             <!-- end of list more button -->
             <!-- fontawasome class binding -->
-            <div class="lists">
-            <hr>
-                <div class="amenities list">
-                    <div class="title"><strong>Amenities</strong>
-                    </div>
-                <div class="content">
+            <div class="list">
+                <feature-list title ="Anemitites">
                     <div class="list-item" v-for="amenity in amenities">
                         <i class="fa fa-lg" :class="amenity.icon"></i>
                         <span>@{{ amenity.title }}</span>
                     </div>
-                </div>
+                </feature-list>
+                <feature-list title="Prices">
+                    <div class="list-item" v-for="price in prices">
+                        @{{price.title}}: <strong>@{{price.value}}</strong>
+                    </div>
+                </feature-list>
             </div>
         <!-- end of fontawasome class binding -->
-            <hr>
         <!-- start price list -->
-            <div class="prices list">
-                    <div class="title">
-                        <strong>Prices</strong>
-                    </div>
-                    <div class="content">
-                        <div class="list-item" v-for="price in prices">
-                            @{{price.title}}: <strong>@{{price.value}}</strong>
-                        </div>
-                    </div>
-            </div>
         <!-- end of price list -->
-            </div>
         </div>
     <!-- container end -->
     <!-- modal with close -->
@@ -79,7 +67,7 @@
                 <image-carousel :images="images"></image-carousel>
             </modal-window>
         </div>
-    </div>
+    
     
     <script>
         window.vuebnb_listing_model = "{!! addslashes(json_encode($model)) !!}"

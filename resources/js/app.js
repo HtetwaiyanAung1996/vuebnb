@@ -10,13 +10,16 @@ Vue.component('my-component', {
 import ImageCarousel from '../components/ImageCarousel.vue';
 import ModalWindow from '../components/ModalWindow.vue';
 import HeaderImage from '../components/HeaderImage.vue';
+import FeatureList from '../components/FeatureList.vue';
+import ExpandableText from '../components/ExpandableText.vue';
 window.app = new Vue({
     el: '#app',
     components: {
         ImageCarousel,
         ModalWindow,
-        HeaderImage
-
+        HeaderImage,
+        FeatureList,
+        ExpandableText
     },
     data: Object.assign(model, {
         title: model.title, //from data.js
