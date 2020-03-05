@@ -15,6 +15,7 @@
     <div id="toolbar">
         <img class="icon" src="{{ asset('images/logo.png') }}">
         <h1>vuebnb</h1>
+        <h1>I am Changing</h1>
     </div>
     <div id="app">
         <listing-page></listing-page>
