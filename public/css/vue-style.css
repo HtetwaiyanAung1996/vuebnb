@@ -167,3 +167,10 @@ p {
     text-decoration: underline;
     outline: none;
 }
+
+.about {
+    margin: 2em 0;
+}
+.about h3 {
+    font-size: 22px;
+}
