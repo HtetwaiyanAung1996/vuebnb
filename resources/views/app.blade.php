@@ -12,21 +12,15 @@
 </head>
 <!-- start body -->
 <body>
-    <div id="toolbar">
-        <img class="icon" src="{{ asset('images/logo.png') }}">
-        <h1>vuebnb</h1>
-        <h1>I am Changing</h1>
-    </div>
+    
     <div id="app">
-        <listing-page></listing-page>
+    
     </div>
+    {{-- receive data from controller --}}
     <script>
-        window.vuebnb_listing_model = "{!! addslashes(json_encode($model)) !!}"
-        // window.vuebnb_listing_model = @json($model);//"{!! addslashes(json_encode($model)) !!}"    
+        window.vuebnb_server_data = "{!! addslashes(json_encode($data)) !!}"
     </script>
-    <script>
-        // console.log(window.vuebnb_listing_model);
-    </script>
+    
     <script src="{{ asset('js/app.js') }}"></script>
     
 </body>

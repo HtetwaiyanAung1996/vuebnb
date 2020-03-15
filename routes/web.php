@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view ('test');
-});
-Route::get('/listing/{id}', 'ListingController@get_listing_web');
+Route::get('/', 'ListingController@get_home_web');//for home
+
+Route::get('/listing/{id}', 'ListingController@get_listing_web');//for listing
 
 Route::get('/test', function(){
     $data = \App\Listing::get();
@@ -21,3 +20,4 @@ Route::get('/test', function(){
     // return $data->toJson();
     dd($data);
 });
+

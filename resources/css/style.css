@@ -168,3 +168,6 @@ button {
   bottom: 20px;
   left: 20px;
 }
+html, body {
+  overflow-x: hidden;
+}

@@ -1,9 +1,10 @@
-// import "core-js/fn/object/assign";
 import Vue from 'vue';
-import ListingPage from '../components/ListingPage.vue';
+import App from '../components/App.vue'
+import router from './router';
 window.app = new Vue({
     el: '#app',
-    render: h => h(ListingPage)
+    render: h => h(App),
+    router
 });
 
 
