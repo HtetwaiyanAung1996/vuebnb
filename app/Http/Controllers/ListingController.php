@@ -7,6 +7,12 @@ use App\Listing;
 
 class ListingController extends Controller
 {   
+    private function add_meta_data($collection, $request)
+        {
+            return $collection->merge([
+                'path' => $request->getPathInfo()
+            ]);
+        }
     private function get_listing($list, $id)
         {
             for($i = 1; $i <=4; $i++) {
@@ -40,7 +46,7 @@ class ListingController extends Controller
             return view('app', ['data' => $list]);
         }
 
-    public function get_home_web()
+    public function get_home_web(Request $request)
         {
             $collection = Listing::all([
                 'id', 'address', 'title', 'price_per_night'
@@ -51,7 +57,11 @@ class ListingController extends Controller
                 );
             return $listing;
             });
+            // return $collection;
+            // return $request->getPathInfo();
             $data = collect(['listings' => $collection->toArray()]);
+            $data = $this->add_meta_data($data, $request);
+            return $data;
             return view('app', compact('data'));
         }
 }
