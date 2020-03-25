@@ -61,7 +61,8 @@ class ListingController extends Controller
             // return $request->getPathInfo();
             $data = collect(['listings' => $collection->toArray()]);
             $data = $this->add_meta_data($data, $request);
-            return $data;
+            // return $data;
             return view('app', compact('data'));
         }
+
 }
