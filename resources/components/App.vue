@@ -9,8 +9,7 @@
 		
 		<router-view></router-view> 
 	</div>
-</template>
-
+</template> 
 <style >
 	#toolbar {
 		display: flex;
