@@ -61,8 +61,26 @@ class ListingController extends Controller
             // return $request->getPathInfo();
             $data = collect(['listings' => $collection->toArray()]);
             $data = $this->add_meta_data($data, $request);
-            // return $data;
             return view('app', compact('data'));
         }
+    
+    private function get_listing_summaries(){
+        $collection = Listing::all([
+            'id', 'address', 'title', 'price_per_night'
+        ]);
+        $collection->transform(function($listing) {
+            $listing->thumb = asset(
+                'images/' . $listing->id . '/Image_1_thumb.jpg'
+            );
+        return $listing;
+        });
+        $data = collect(['listings' => $collection->toArray()]);
+        return $data;
+    }
+
+    public function get_home_api(){
+        $data = $this->get_listing_summaries();
+        return response()->json($data);
+    }
 
 }
