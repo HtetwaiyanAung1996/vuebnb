@@ -40,7 +40,7 @@ class ListingController extends Controller
             return view('app', ['data' => $list]);
         }
 
-    public function get_home_web()
+    public function get_home_web(Request $request)
         {
             $collection = Listing::all([
                 'id', 'address', 'title', 'price_per_night'
