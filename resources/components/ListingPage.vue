@@ -47,28 +47,25 @@
     import HeaderImage from '../components/HeaderImage.vue';
     import FeatureList from '../components/FeatureList.vue';
     import ExpandableText from '../components/ExpandableText.vue';  
+    import routeMixin from '../js/route-mixin';
     export default {
+        mixins: [routeMixin],
         data() {
-                    return Object.assign(model, {
-                                title: model.title, 
-                                address: model.address, 
-                                about: model.about, 
+                    return {
+                                title: null, 
+                                address: null, 
+                                about: null, 
                                 myval: true,    
                                 headerImageStyle: {
                                     'background-image': `url(${model.images[0]})`  //for image binding
                                 },
-                                amenities: model.amenities, 
+                                amenities: [], 
                                 prices: model.prices, 
                                 contracted: true,    
                                 modalOpen: false, 
                                     message: 'Hello World',
-                                images: [
-                                    '/images/1/Image_1.jpg',
-                                    '/images/1/Image_2.jpg',
-                                    '/images/1/Image_3.jpg',
-                                    '/images/1/Image_4.jpg'
-                                    ]
-                            })
+                                images: []
+                            }
         },
         components: {
             ImageCarousel,
@@ -78,6 +75,9 @@
             ExpandableText
         },
         methods: {
+            assignData({ listing }) {
+                Object.assign(this.$data, populateAmenitiesAndPrices(listing));
+            },
             openModal() {
                 this.$refs.imagemodal.modalOpen = true;
             }
