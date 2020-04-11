@@ -30,20 +30,21 @@ class ListingController extends Controller
             // return $name;
             // return $_REQUEST;
             $list = Listing::find($id);
-            return $list;
+            $data = $this->get_listing($list,$id);
+            return $data;
         }
 
-    public function get_listing_web($id)
+    public function get_listing_web($id, Request $request)
         {
             // dd($request->category);
             // return $name;
             // return $_REQUEST;
-            $list = Listing::find($id)->toArray();
+            $list = Listing::find($id);
             // dd($list->toArray());
             // dd($list);
-            $list = $this->get_listing($list,$id);
-        
-            return view('app', ['data' => $list]);
+            $data = $this->get_listing($list,$id);
+            
+            return $data;
         }
 
     public function get_home_web(Request $request)

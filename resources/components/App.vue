@@ -6,10 +6,11 @@
 				<h1>vuebnb</h1>
 			</router-link>
 		</div>
-		
 		<router-view></router-view> 
+		<custom-footer></custom-footer>
 	</div>
 </template> 
+
 <style >
 	#toolbar {
 		display: flex;
@@ -34,4 +35,13 @@
 		text-decoration: none;
 	}
 </style>
+
+<script>
+import CustomFooter from './CustomFooter.vue';
+export default {
+	components: {
+		CustomFooter
+	}
+}
+</script>
 

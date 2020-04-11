@@ -1,6 +1,7 @@
 <template>
         <i :class="classes" v-on:click ="clicked" ></i>
 </template>
+
 <script>
 export default {
     props: ["dir"],
@@ -12,10 +13,12 @@ export default {
     methods: {
         clicked: function() {
             this.$emit("change-image", this.dir === "left" ? -1 : 1);
+            // this.$emit("change-image", "fuck u bitch")
         }
     }
 }
 </script>
+
 <style>
     .carousel-control {
         padding: 1rem;

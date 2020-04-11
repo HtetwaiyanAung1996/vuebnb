@@ -1,12 +1,13 @@
 <template>
     <div>
         <header-image
+            v-if="images[0]"
             :image-url="images[0]"
             @header-clicked="openModal"
         ></header-image>
-
-        <div class="container">
         
+        <div class="listing-container">
+            {{ images }}
             <p v-if="myval"> Hello Vue </p>
             <p v-else> GoodBye Vue</p>
             <div class="heading">
@@ -15,6 +16,7 @@
             </div>
             <hr>
             <div class="about">
+                    {{ testing }}
                 <h3>About This Listing</h3>
                 <expandable-text>{{ about }}</expandable-text>
             </div>
@@ -51,21 +53,18 @@
     export default {
         mixins: [routeMixin],
         data() {
-                    return {
-                                title: null, 
-                                address: null, 
-                                about: null, 
-                                myval: true,    
-                                headerImageStyle: {
-                                    'background-image': `url(${model.images[0]})`  //for image binding
-                                },
-                                amenities: [], 
-                                prices: model.prices, 
-                                contracted: true,    
-                                modalOpen: false, 
-                                    message: 'Hello World',
-                                images: []
-                            }
+            return {
+                title: null, 
+                address: null, 
+                about: null, 
+                myval: true,   
+                amenities: [], 
+                prices: [], 
+                contracted: true,    
+                modalOpen: false, 
+                images: [],
+                testing: []
+            }
         },
         components: {
             ImageCarousel,
@@ -75,7 +74,8 @@
             ExpandableText
         },
         methods: {
-            assignData({ listing }) {
+            assignData( listing ) {
+                console.log( listing );
                 Object.assign(this.$data, populateAmenitiesAndPrices(listing));
             },
             openModal() {
