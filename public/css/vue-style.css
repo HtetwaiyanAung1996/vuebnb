@@ -43,8 +43,24 @@
 	text-decoration: none;
 }
 
+.listing-save {
+    position: absolute; 
+    /* absolute is calculated base on grand element ----!!! */
+    /*It is based on listing summary */
+    top: 20px;
+    right: 20px;
+    cursor: pointer; 
+    /* cursor pointer is used to get hand finger sign when cursor is on the */
+}
+.listing-save .fa-heart {
+    color: #ff5a5f;
+}
+
+
 .listing-summary {
     flex: 0 0 auto;
+    position: relative
+    /* The element is positioned relative to its normal position, so "left:20px" adds 20 pixels to the element's LEFT position */
 }
 .listing-summary a {
     text-decoration: none;
@@ -76,6 +92,12 @@
 .listing-summary .info.address {
     font-size: 14px;
     line-height: 18px;
+}
+@media (max-width: 400px) {
+.listing-summary .listing-save {
+        left: 15px;
+        right: auto;
+}
 }
 
 
@@ -110,9 +132,12 @@
     overflow: hidden;
 }
 .listing-summaries {
+    /* flex is used to order the listing summaries */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    transition: transform 0.5s;
+    /* transition is used to control the moving speed */
 }
 .listing-summary-group {
     padding-bottom: 20px;

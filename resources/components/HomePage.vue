@@ -27,7 +27,6 @@ export default {
 	},
 	methods: {
 		assignData({ listings }) {
-			console.log(listings);
 			this.listing_groups = groupByCountry(listings)
 		}
 	},

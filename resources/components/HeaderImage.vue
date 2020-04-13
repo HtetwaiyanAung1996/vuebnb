@@ -4,23 +4,31 @@
             :style="headerImageStyle"
             @click="$emit('header-clicked')"
         >
+            <!-- adding listing save component to header image -->
+            <listing-save :id="id" :button="true"></listing-save>
             <button class="view-photos">View Photos</button>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    computed: {
-        headerImageStyle: function() {
-            return {
-                'background-image': `url(${this.imageUrl})`
-            }
-        }
-    },
-    props: [ 'image-url' ]
+    // importing listing save component
+    import ListingSave from './ListingSave.vue';
 
-}
+    export default {
+        computed: {
+            headerImageStyle: function() {
+                return {
+                    'background-image': `url(${this.imageUrl})`
+                }
+            }
+        },
+        props: [ 'image-url', 'id' ],
+        components: {
+            ListingSave
+        }
+
+    }
 </script>
 
 <style>

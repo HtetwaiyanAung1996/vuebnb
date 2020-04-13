@@ -4,10 +4,11 @@
             v-if="images[0]"
             :image-url="images[0]"
             @header-clicked="openModal"
+            :id = "id"
         ></header-image>
         
         <div class="listing-container">
-            {{ images }}
+            {{ id }}
             <p v-if="myval"> Hello Vue </p>
             <p v-else> GoodBye Vue</p>
             <div class="heading">
@@ -16,7 +17,6 @@
             </div>
             <hr>
             <div class="about">
-                    {{ testing }}
                 <h3>About This Listing</h3>
                 <expandable-text>{{ about }}</expandable-text>
             </div>
@@ -63,7 +63,8 @@
                 contracted: true,    
                 modalOpen: false, 
                 images: [],
-                testing: []
+                testing: [],
+                id: null
             }
         },
         components: {

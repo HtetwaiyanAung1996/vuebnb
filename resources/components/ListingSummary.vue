@@ -1,6 +1,11 @@
 <template>
     <div class="listing-summary">
         <router-link :to="{ name: 'listing', params: { listing: listing.id } }">
+            <!--listing save component which prop is :id -->
+            <listing-save 
+                :id = "listing.id"
+            ></listing-save>
+
             <div class="wrapper">
                 <div class="thumbnail" :style="backgroundImageStyle"></div>
                 <div class="info title">
@@ -9,24 +14,31 @@
                 </div>
                 <div class="info address">{{ listing.address }}</div>
             </div>
+
         </router-link>
     </div>
 </template>
 <script>
-export default {
-    props: [ 'listing'],
-    computed: {
-        backgroundImageStyle(){
-            return {
-                'background-image' : `url("${this.listing.thumb}")`
+    import ListingSave from './ListingSave.vue';
+    export default {
+        props: [ 'listing'],
+        computed: {
+            backgroundImageStyle(){
+                return {
+                    'background-image' : `url("${this.listing.thumb}")`
+                }
             }
+        },
+        components: {
+            ListingSave
         }
     }
-}
 </script>
 <style >
     .listing-summary {
         flex: 0 0 auto;
+        position: relative
+        /* The element is positioned relative to its normal position, so "left:20px" adds 20 pixels to the element's LEFT position */
     }
     .listing-summary a {
         text-decoration: none;
@@ -58,6 +70,12 @@ export default {
     .listing-summary .info.address {
         font-size: 14px;
         line-height: 18px;
+    }
+    @media (max-width: 400px) {
+        .listing-summary .listing-save {
+            left: 15px;
+            right: auto;
+        }
     }
 
 </style>
