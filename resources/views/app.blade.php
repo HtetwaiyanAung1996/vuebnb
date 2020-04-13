@@ -12,14 +12,14 @@
 </head>
 <!-- start body -->
 <body>
-    
+
     <div id="app">
-    
+
     </div>
     {{-- receive data from controller --}}
     <script>
         window.vuebnb_server_data = "{!! addslashes(json_encode($data)) !!}"
-        // console.log(window.vuebnb_server_data);
+        // console.log(window.vuebnb_server_data)
     </script>
     
     <script src="{{ asset('js/app.js') }}"></script>

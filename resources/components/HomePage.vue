@@ -6,8 +6,8 @@
 		:listings="group"
 		:country="country"
 		class="listing-summary-group">
-			
 		</listing-summary-group>
+		
 	</div>
 </template>
 
@@ -15,25 +15,22 @@
 
 import { groupByCountry } from '../js/helpers';
 import ListingSummaryGroup from './ListingSummaryGroup.vue';
-import routeMixin from '../js/route-mixin';
 
 
-export default {
-	mixins: [ routeMixin ],
-	data() {
-		return {
-			listing_groups: []
+	export default {
+		created() {
+			console.log(this.$store);
+		},
+		computed: {
+			listing_groups() {
+				return groupByCountry(this.$store.state.listing_summaries);
+			}
+		},
+		components: {
+			ListingSummaryGroup
 		}
-	},
-	methods: {
-		assignData({ listings }) {
-			this.listing_groups = groupByCountry(listings)
-		}
-	},
-	components: {
-		ListingSummaryGroup
 	}
-}
+	
 </script>
 
 <style>

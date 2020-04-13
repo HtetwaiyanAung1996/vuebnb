@@ -1,42 +1,41 @@
 <template>
     <div>
         <header-image
-            v-if="images[0]"
-            :image-url="images[0]"
+            v-if="listing.images[0]"
+            :image-url="listing.images[0]"
             @header-clicked="openModal"
             :id = "id"
         ></header-image>
-        
+        <pre>{{ listing }}</pre>
         <div class="listing-container">
             {{ id }}
             <p v-if="myval"> Hello Vue </p>
             <p v-else> GoodBye Vue</p>
             <div class="heading">
-                <h1>{{title}}</h1>
-                <p>{{address}}</p>
+                <h1>{{listing.title}}</h1>
+                <p>{{listing.address}}</p>
             </div>
             <hr>
             <div class="about">
                 <h3>About This Listing</h3>
-                <expandable-text>{{ about }}</expandable-text>
+                <expandable-text>{{ listing.about }}</expandable-text>
             </div>
             <div class="list">
                 <feature-list title ="Anemitites">
-                    <div class="list-item" v-for="amenity in amenities">
+                    <div class="list-item" v-for="amenity in listing.amenities">
                         <i class="fa fa-lg" :class="amenity.icon"></i>
                         <span>{{ amenity.title }}</span>
                     </div>
                 </feature-list>
                 <feature-list title="Prices">
-                    <div class="list-item" v-for="price in prices">
+                    <div class="list-item" v-for="price in listing.prices">
                         {{price.title}}: <strong>{{price.value}}</strong>
                     </div>
                 </feature-list>
             </div>
         </div>
-    
         <modal-window ref="imagemodal">
-            <image-carousel :images="images"></image-carousel>
+            <image-carousel :images="listing.images"></image-carousel>
         </modal-window>
     </div>
 </template>
@@ -49,22 +48,12 @@
     import HeaderImage from '../components/HeaderImage.vue';
     import FeatureList from '../components/FeatureList.vue';
     import ExpandableText from '../components/ExpandableText.vue';  
-    import routeMixin from '../js/route-mixin';
     export default {
-        mixins: [routeMixin],
         data() {
             return {
-                title: null, 
-                address: null, 
-                about: null, 
-                myval: true,   
-                amenities: [], 
-                prices: [], 
                 contracted: true,    
                 modalOpen: false, 
-                images: [],
-                testing: [],
-                id: null
+                id: 1   
             }
         },
         components: {
@@ -74,11 +63,17 @@
             FeatureList,
             ExpandableText
         },
+        created() {
+            console.log(this.$store.state.listings)
+        },
+        computed: {
+            listing() {
+                return populateAmenitiesAndPrices(
+                    this.$store.getters.getListing(this.$route.params.listing)
+                );
+            }
+        },
         methods: {
-            assignData( listing ) {
-                console.log( listing );
-                Object.assign(this.$data, populateAmenitiesAndPrices(listing));
-            },
             openModal() {
                 this.$refs.imagemodal.modalOpen = true;
             }
