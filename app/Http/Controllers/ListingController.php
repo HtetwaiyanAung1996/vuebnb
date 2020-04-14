@@ -70,9 +70,9 @@ class ListingController extends Controller
             'id', 'address', 'title', 'price_per_night'
         ]);
         $collection->transform(function($listing) {
-            $listing->thumb = asset(
+            $listing->thumb = asset(groupByCountry
                 'images/' . $listing->id . '/Image_1_thumb.jpg'
-            );
+        );
         return $listing;
         });
         $data = collect(['listings' => $collection->toArray()]);

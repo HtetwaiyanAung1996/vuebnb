@@ -19,7 +19,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers;  // it is used for showLoginForm Method
 
     /**
      * Where to redirect users after login.
@@ -36,5 +36,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * showLoginForm 
+     */
+
+    public function showLoginForm()
+    {
+        return view ('app', ['data' => []]);
     }
 }

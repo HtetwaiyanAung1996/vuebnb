@@ -24,3 +24,5 @@ Route::get('/test', function(){
 //for save page
 Route::get('/saved', 'ListingController@get_home_web');
 
+Auth::routes();   // to activate the authentication routes
+

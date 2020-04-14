@@ -1,22 +1,4 @@
 
-.image-carousel {
-  height: 100%;
-  margin-top: -12vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.image-carousel img {
-  width: 100%;
-}
-.image-carousel .controls {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
 #footer {
     margin-bottom: 3em;
 }
@@ -37,6 +19,56 @@
 #footer p img {
     padding-right: 6px;
 }
+
+#toolbar {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #e4e4e4;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+#toolbar .icon {
+	height: 34px;
+	padding: 16px 12px 16px 24px;
+	display: inline-block;
+}
+#toolbar h1 {
+	color: #4fc08d;
+	display: inline-block;
+	font-size: 28px;
+	margin: 0;
+}
+#toolbar a {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+
+/* for savepage btn */
+#toolbar ul {
+	display: flex;
+	align-items: center; 
+	list-style: none;
+	padding: 0 24px 0 0;
+	margin: 0;
+}
+/* align-items center is used to reach the middle of parent element  */
+#toolbar ul li {
+	padding: 10px 10px 0 10px;
+}
+#toolbar ul li a {
+	text-decoration: none;
+	line-height: 1;
+	color: inherit;
+	font-size: 13px;
+	padding-bottom: 8px;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+}
+#toolbar ul li a:hover {
+	border-bottom: 2px solid #484848;
+	padding-bottom: 6px;
+}
+
 
 .listing-save {
     position: absolute; 
@@ -161,55 +193,23 @@
 	margin-right: 0;
 }
 
-#toolbar {
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 1px solid #e4e4e4;
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+.image-carousel {
+  height: 100%;
+  margin-top: -12vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#toolbar .icon {
-	height: 34px;
-	padding: 16px 12px 16px 24px;
-	display: inline-block;
+.image-carousel img {
+  width: 100%;
 }
-#toolbar h1 {
-	color: #4fc08d;
-	display: inline-block;
-	font-size: 28px;
-	margin: 0;
+.image-carousel .controls {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
-#toolbar a {
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-}
-
-/* for savepage btn */
-#toolbar ul {
-	display: flex;
-	align-items: center; 
-	list-style: none;
-	padding: 0 24px 0 0;
-	margin: 0;
-}
-/* align-items center is used to reach the middle of parent element  */
-#toolbar ul li {
-	padding: 10px 10px 0 10px;
-}
-#toolbar ul li a {
-	text-decoration: none;
-	line-height: 1;
-	color: inherit;
-	font-size: 13px;
-	padding-bottom: 8px;
-	letter-spacing: 0.5px;
-	cursor: pointer;
-}
-#toolbar ul li a:hover {
-	border-bottom: 2px solid #484848;
-	padding-bottom: 6px;
-}
-
 
 #modal {
     display: none;
@@ -372,3 +372,43 @@ p {
 .listing-summaries > .listing-summary {
     margin-right: 15px;
 }
+
+#login form{
+    padding-top:40px;
+}
+@media (max-width: 744px) {
+#login form{
+        padding-top: 80px;
+}
+}
+#login .form-control{
+    margin-bottom: 1em;
+}
+#login input[type=email],
+#login input[type=password],
+#login button,
+
+#login label {
+    width: 100%;
+    font-size: 19px !important;
+    line-height: 24px;
+    color: #484848;
+    font-weight: 300;
+}
+#login input {
+    background-color: transparent;
+    padding: 11px;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    box-sizing:border-box
+}
+#login button {
+    background-color: #4fc08d;
+    color: #ffffff;
+    cursor: pointer;
+    border: #4fc08d;
+    border-radius: 4px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
