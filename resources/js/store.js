@@ -7,7 +7,7 @@ Vue.use(Vuex)
 //If we want to export a single value or to have a fallback value for your module, you could use a default export:
 export default new Vuex.Store({
     state: {
-        saved: [5, 10, 9888, 9439539],
+        saved: [ ],
         listing_summaries: [],
         listings: []
     },

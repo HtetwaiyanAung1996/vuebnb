@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HomePage from '../components/HomePage.vue';
 import ListingPage from '../components/ListingPage.vue';
+import SavePage from '../components/SavePage.vue';
 import store from './store';
 import axios from 'axios';
 
@@ -10,7 +11,8 @@ let router =  new VueRouter({
 	mode: 'history',
 	routes: [
 				{ path: '/', component: HomePage, name: 'home'},
-				{ path: '/listing/:listing', component: ListingPage, name: 'listing'}
+				{ path: '/listing/:listing', component: ListingPage, name: 'listing'},
+				{ path: '/saved', component: SavePage, name: 'saved'}
 	],
 	//scroll Behavior is used to return the next page starts in Top
 	scrollBehavior (to, from, savedPosition) {

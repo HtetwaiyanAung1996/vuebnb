@@ -21,3 +21,6 @@ Route::get('/test', function(){
     dd($data);
 });
 
+//for save page
+Route::get('/saved', 'ListingController@get_home_web');
+

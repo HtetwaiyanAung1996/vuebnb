@@ -35,5 +35,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'saved' => 'array'
     ];
+
+    /**
+     *  for accessing saved attribute as an array
+     * 
+     */
+
 }
