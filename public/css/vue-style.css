@@ -370,7 +370,7 @@ p {
 
 /* 	Selects all <listing-summary> elements where the parent is a <listing-summaries> element */
 .listing-summaries > .listing-summary {
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 #login form{

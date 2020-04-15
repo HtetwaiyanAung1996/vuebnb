@@ -6,11 +6,9 @@
             @header-clicked="openModal"
             :id = "id"
         ></header-image>
-        <pre>{{ listing }}</pre>
+        <!-- <pre>{{ listing }}</pre> -->
         <div class="listing-container">
-            {{ id }}
-            <p v-if="myval"> Hello Vue </p>
-            <p v-else> GoodBye Vue</p>
+            
             <div class="heading">
                 <h1>{{listing.title}}</h1>
                 <p>{{listing.address}}</p>

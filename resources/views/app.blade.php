@@ -20,6 +20,7 @@
     <script>
         window.vuebnb_server_data = "{!! addslashes(json_encode($data)) !!}"
         // console.log(window.vuebnb_server_data)
+        window.csrf_token = "{{ csrf_token() }}"
     </script>
     
     <script src="{{ asset('js/app.js') }}"></script>

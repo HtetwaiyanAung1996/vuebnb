@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Listing;
-
+use Illuminate\Support\Facades\Auth;
 class ListingController extends Controller
 {   
     private function add_meta_data($collection, $request)
         {
+            //  merge is used 
+            // if keys are the same, overwrite within the collection
+            // if keys are not the same, the values will be append at the end of the collection
+            
             return $collection->merge([
-                'path' => $request->getPathInfo()
+                'path' => $request->getPathInfo(),
+                'auth' => Auth::check(),
+                'saved' => Auth::check()? Auth::user()->saved : []
+                // Auth::user()->saved is used to get the saved column in user table
             ]);
         }
     private function get_listing($list, $id)
@@ -60,8 +67,11 @@ class ListingController extends Controller
             });
             // return $collection;
             // return $request->getPathInfo();
+
+            //collect method return a new instance for the given array
             $data = collect(['listings' => $collection->toArray()]);
             $data = $this->add_meta_data($data, $request);
+            // dd ($data);
             return view('app', compact('data'));
         }
     
@@ -69,12 +79,12 @@ class ListingController extends Controller
         $collection = Listing::all([
             'id', 'address', 'title', 'price_per_night'
         ]);
-        // $collection->transform(function($listing) {
-        //     $listing->thumb = asset(groupByCountry)
-        //         'images/' . $listing->id . '/Image_1_thumb.jpg'
-        // );
-        // return $listing;
-        // });
+        $collection->transform(function($listing) {
+            $listing->thumb = asset(
+                'images/' . $listing->id . '/Image_1_thumb.jpg'
+        );
+        return $listing;
+        });
         $data = collect(['listings' => $collection->toArray()]);
         return $data;
     }

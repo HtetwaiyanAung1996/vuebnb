@@ -28,4 +28,6 @@ Route::get('/', 'ListingController@get_home_api');
 //for save page
 Route::get('/saved', 'ListingController@get_home_api');
 
+//for save listing saved into the database
+Route::post('/user/toggle_saved', 'UserController@toggleSaved')->middleware('auth:api');
 

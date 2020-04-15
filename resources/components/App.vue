@@ -6,8 +6,24 @@
 				<h1>vuebnb</h1>
 			</router-link>
 			<ul class="links">
-				<li>
+				<li v-if="$store.state.auth">
 					<router-link :to="{ name: 'saved' }">Saved</router-link>
+				</li>
+				<!-- when login, we show only logout -->
+				<li v-if="$store.state.auth">
+					<a @click="logout">Logout</a>
+					<form 
+						style="display:hidden"
+						action="/logout"
+						method="POST"
+						id="logout">
+
+						<input type="hidden" name="_token" :value="csrf_token">  
+					</form>
+				</li>
+				<!-- when logout, we show only login -->
+				<li v-else>
+					<router-link :to="{ name: 'login' }">Login</router-link>
 				</li>
 			</ul>
 		</div>
@@ -72,8 +88,18 @@
 <script>
 import CustomFooter from './CustomFooter.vue';
 export default {
+	data() {
+		return {
+			csrf_token : window.csrf_token
+		}
+	},
 	components: {
 		CustomFooter
+	},
+	methods: {
+		logout() { ///to submit the hidden logout form
+			document.getElementById('logout').submit();
+		}
 	}
 }
 </script>

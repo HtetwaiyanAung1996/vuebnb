@@ -11,6 +11,8 @@
 </template>
 
 <script>
+
+import axios from 'axios';
 export default {
     props: ['id', 'button'],
     data () {
@@ -20,7 +22,8 @@ export default {
     },
     methods: {
         toggleSaved () {
-            this.$store.commit ('toggleSaved', this.id)
+            //dispatch is used for actions
+            this.$store.dispatch ('toggleSaved', this.id)
         },
     },
     computed: {
@@ -31,7 +34,7 @@ export default {
 
         classes () {
             let saved = this.isListingSaved;
-            console.log (saved);
+            // console.log (saved);
             return {
                 'fa': true,
                 'fa-lg': true,

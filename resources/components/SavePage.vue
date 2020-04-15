@@ -1,6 +1,7 @@
 <template>
     <div id="saved" class="home-container">
         <h2>Saved Listings</h2>
+        <!-- <pre> {{ listings }} </pre> -->
         <div v-if="listings.length" class="listing-summaries">
             <listing-summary
                 v-for="listing in listings"
@@ -45,6 +46,6 @@
 
     /* 	Selects all <listing-summary> elements where the parent is a <listing-summaries> element */
     .listing-summaries > .listing-summary {
-        margin-right: 15px;
+        margin-right: 10px;
     }
 </style>
